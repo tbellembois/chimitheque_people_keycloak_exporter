@@ -5,7 +5,7 @@ use std::{
 };
 
 use log::debug;
-use rusqlite::Connection;
+use rusqlite::{Connection, OpenFlags};
 use serde::Serialize;
 
 #[derive(Serialize, Debug)]
@@ -39,7 +39,8 @@ fn main() {
     let duration_since_epoch = current_system_time.duration_since(UNIX_EPOCH).unwrap();
     let milliseconds_timestamp = duration_since_epoch.as_millis();
 
-    let connection = Connection::open("storage.db").unwrap();
+    let connection =
+        Connection::open_with_flags("storage.db", OpenFlags::SQLITE_OPEN_READ_ONLY).unwrap();
 
     let mut stmt = connection
         .prepare("SELECT person_id, person_email FROM person")
