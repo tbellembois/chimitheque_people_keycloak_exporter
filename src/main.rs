@@ -1,4 +1,5 @@
 use std::{
+    collections::HashMap,
     fs::File,
     io::{BufWriter, Write},
     time::{SystemTime, UNIX_EPOCH},
@@ -43,14 +44,27 @@ fn main() {
         Connection::open_with_flags("storage.db", OpenFlags::SQLITE_OPEN_READ_ONLY).unwrap();
 
     let mut stmt = connection
-        .prepare("SELECT person_id, person_email FROM person")
+        .prepare("SELECT person_id, person_email FROM person WHERE person_email != 'admin@chimitheque.fr'")
         .unwrap();
+
+    let mut extracted_emails = HashMap::new();
+
     let people: Vec<Person> = stmt
         .query_map([], |row| {
+            let person_email: String = row.get(1)?;
+            let username = person_email.clone().to_ascii_lowercase();
+            let email = person_email.clone().to_ascii_lowercase();
+
+            if extracted_emails.get(&email).is_some() {
+                panic!("{} already present", email);
+            }
+
+            extracted_emails.insert(email.clone(), "not_used");
+
             Ok(Person {
                 id: row.get(0)?,
-                username: row.get(1)?,
-                email: row.get(1)?,
+                username,
+                email,
                 emailVerified: true,
                 createdTimestamp: milliseconds_timestamp,
                 enabled: true,
