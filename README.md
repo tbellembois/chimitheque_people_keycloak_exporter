@@ -1,5 +1,3 @@
-# chimitheque_people_keycloak_exporter
-
 Export Chimithèque users into a keycloak import file.
 
 Static compilation with:
