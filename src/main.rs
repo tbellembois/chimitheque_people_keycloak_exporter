@@ -55,9 +55,10 @@ fn main() {
             let username = person_email.clone().to_ascii_lowercase();
             let email = person_email.clone().to_ascii_lowercase();
 
-            if extracted_emails.contains_key(&email) {
-                panic!("{} already present", email);
-            }
+            assert!(
+                !extracted_emails.contains_key(&email),
+                "{email} already present",
+            );
 
             extracted_emails.insert(email.clone(), "not_used");
 

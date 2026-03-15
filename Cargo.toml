@@ -1,7 +1,20 @@
 [package]
 name = "chimitheque_people_keycloak_exporter"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
+authors = ["Thomas Bellembois <thomas.bellembois@proton.me>"]
+description = "Users exporter for keycloak for Chimithèque"
+license = "GPL-3.0"
+repository = "https://github.com/tbellembois/chimitheque_people_keycloak_exporter"
+homepage = "https://github.com/tbellembois/chimitheque_people_keycloak_exporter"
+readme = "README.md"
+categories = ["database", "science"]
+keywords = ["chemistry", "biology", "database", "management"]
+rust-version = "1.94.0"
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
