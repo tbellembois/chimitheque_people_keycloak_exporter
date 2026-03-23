@@ -1,6 +1,9 @@
+[![Rust](https://github.com/tbellembois/chimitheque_people_keycloak_exporter/actions/workflows/rust.yml/badge.svg)](https://github.com/tbellembois/chimitheque_people_keycloak_exporter/actions/workflows/rust.yml)
+
 Export Chimithèque users into a keycloak import file.
 
 Static compilation with:
+
 ```bash
 docker pull messense/rust-musl-cross:x86_64-musl
 alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src messense/rust-musl-cross:x86_64-musl'
