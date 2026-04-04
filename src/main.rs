@@ -100,7 +100,7 @@ fn main() {
         realm: "chimitheque",
         users: people,
     };
-    debug!("{:?}", realm);
+    debug!("{realm:?}");
 
     let file = File::create("keycloak.json").unwrap();
     let mut writer = BufWriter::new(file);
