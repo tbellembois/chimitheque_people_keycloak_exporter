@@ -42,7 +42,7 @@ fn main() {
 
     let db_path: String = if fs::exists("storage.db").unwrap() {
         "storage.db".to_string()
-    } else if fs::exists("chiimtheque.sqlite").unwrap() {
+    } else if fs::exists("chimitheque.sqlite").unwrap() {
         "chimitheque.sqlite".to_string()
     } else {
         panic!("No storage.db or chimitheque.sqlite database file found");
