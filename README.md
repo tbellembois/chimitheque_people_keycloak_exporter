@@ -1,6 +1,6 @@
 [![Rust](https://github.com/tbellembois/chimitheque_people_keycloak_exporter/actions/workflows/rust.yml/badge.svg)](https://github.com/tbellembois/chimitheque_people_keycloak_exporter/actions/workflows/rust.yml)
 
-Export Chimithèque users into a keycloak import file.
+Export Chimithèque users into a keycloak JSON import file.
 
 Static compilation with:
 
@@ -10,4 +10,5 @@ alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src messense
 rust-musl-builder cargo build --release
 ```
 
-Run in the directory of the Chimithèque `storage.db*` files.
+Run in the directory of the Chimithèque `storage.db` or `chimitheque.sqlite` files.
+If the two files are present, `storage.db` takes precedence.

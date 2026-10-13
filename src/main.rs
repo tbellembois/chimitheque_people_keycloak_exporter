@@ -1,6 +1,6 @@
 use std::{
     collections::HashMap,
-    fs::File,
+    fs::{self, File},
     io::{BufWriter, Write},
     time::{SystemTime, UNIX_EPOCH},
 };
@@ -40,8 +40,17 @@ fn main() {
     let duration_since_epoch = current_system_time.duration_since(UNIX_EPOCH).unwrap();
     let milliseconds_timestamp = duration_since_epoch.as_millis();
 
+    let db_path: String;
+    if fs::exists("storage.db").unwrap() {
+        db_path = "storage.db".to_string();
+    } else if fs::exists("chiimtheque.sqlite").unwrap() {
+        db_path = "chimitheque.sqlite".to_string();
+    } else {
+        panic!("No storage.db or chimitheque.sqlite database file found");
+    }
+
     let connection =
-        Connection::open_with_flags("storage.db", OpenFlags::SQLITE_OPEN_READ_ONLY).unwrap();
+        Connection::open_with_flags(db_path, OpenFlags::SQLITE_OPEN_READ_ONLY).unwrap();
 
     let mut stmt = connection
         .prepare("SELECT person_id, person_email FROM person WHERE person_email != 'admin@chimitheque.fr'")
