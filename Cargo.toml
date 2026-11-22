@@ -6,7 +6,6 @@ authors = ["Thomas Bellembois <thomas.bellembois@proton.me>"]
 description = "Users exporter for keycloak for Chimithèque"
 license = "GPL-3.0"
 repository = "https://github.com/tbellembois/chimitheque_people_keycloak_exporter"
-homepage = "https://github.com/tbellembois/chimitheque_people_keycloak_exporter"
 readme = "README.md"
 categories = ["database", "science"]
 keywords = ["chemistry", "biology", "database", "management"]
